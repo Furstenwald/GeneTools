@@ -1,0 +1,131 @@
+LOCUS       DQ104847                3737 bp    DNA     circular SYN 21-FEB-2007
+DEFINITION  Mutagenesis vector pNZ5319, complete sequence.
+ACCESSION   DQ104847
+VERSION     DQ104847.1  GI:94982473
+KEYWORDS    .
+SOURCE      Mutagenesis vector pNZ5319
+  ORGANISM  Mutagenesis vector pNZ5319
+            other sequences; artificial sequences; vectors.
+REFERENCE   1  (bases 1 to 3737)
+  AUTHORS   Lambert,J.M., Bongers,R.S. and Kleerebezem,M.
+  TITLE     Cre-lox-based system for multiple gene deletions and
+            selectable-marker removal in Lactobacillus plantarum
+  JOURNAL   Appl. Environ. Microbiol. 73 (4), 1126-1135 (2007)
+   PUBMED   17142375
+REFERENCE   2  (bases 1 to 3737)
+  AUTHORS   Lambert,J.M., Bongers,R.S. and Kleerebezem,M.
+  TITLE     Direct Submission
+  JOURNAL   Submitted (27-JUN-2005) Health and Safety Department, NIZO Food
+            Research, Kernhemseweg 2, Ede, Gld 6718ZB, The Netherlands
+FEATURES             Location/Qualifiers
+     source          1..3737
+                     /organism="Mutagenesis vector pNZ5319"
+                     /mol_type="other DNA"
+                     /db_xref="taxon:341048"
+                     /lab_host="DH5alpha"
+                     /note="derived from Escherichia coli"
+     gene            1..651
+                     /gene="cat"
+     CDS             1..651
+                     /gene="cat"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="chloramphenicol acetyltransferase"
+                     /protein_id="AAZ79486.1"
+                     /db_xref="GI:73665559"
+                     /translation="MNFNKIDLDNWKRKEIFNHYLNQQTTFSITTEIDISVLYRNIKQ
+                     EGYKFYPAFIFLVTRVINSNTAFRTGYNSDGELGYWDKLEPLYTIFDGVSKTFSGIWT
+                     PVKNDFKEFYDLYLSDVEKYNGSGKLFPKTPIPENAFSLSIIPWTSFTGFNLNINNNS
+                     NYLLPIITAGKFINKGNSIYLPLSLQVHHSVCDGYHAGLFMNSIQELSDRPNDWLL"
+     misc_feature    772..805
+                     /note="lox71"
+     terminator      complement(949..1050)
+                     /note="Tlas"
+     gene            complement(1162..1899)
+                     /gene="ery"
+     CDS             complement(1162..1899)
+                     /gene="ery"
+                     /codon_start=1
+                     /transl_table=11
+                     /product="erythromycin resistance protein"
+                     /protein_id="AAZ79487.1"
+                     /db_xref="GI:73665560"
+                     /translation="MNKNIKYSQNFLTSEKVLNQIIKQLNLKETDTVYEIGTGKGHLT
+                     TKLAKISKQVTSIELDSHLFNLSSEKLKLNTRVTLIHQDILQFQFPNKQRYKIVGSIP
+                     YHLSTQIIKKVVFESHASDIYLIVEEGFYKRTLDIHRTLGLLLHTQVSIQQLLKLPAE
+                     CFHPKPKVNSVLIKLTRHTTDVPDKYWKLYTYFVSKWVNREYRQLFTKNQFHQAMKHA
+                     KVNNLSTVTYEQVLSIFNSYLLFNGRK"
+     rep_origin      2228..3140
+                     /note="ori"
+     terminator      3285..3311
+                     /note="TpepN"
+     misc_feature    3505..3538
+                     /note="lox66"
+     promoter        3609..3721
+                     /note="P32"
+ORIGIN
+        1 atgaacttta ataaaattga tttagacaat tggaagagaa aagagatatt taatcattat
+       61 ttgaaccaac aaacgacttt tagtataacc acagaaattg atattagtgt tttataccga
+      121 aacataaaac aagaaggata taaattttac cctgcattta ttttcttagt gacaagggtg
+      181 ataaactcaa atacagcttt tagaactggt tacaatagcg acggagagtt aggttattgg
+      241 gataagttag agccacttta tacaattttt gatggtgtat ctaaaacatt ctctggtatt
+      301 tggactcctg taaagaatga cttcaaagag ttttatgatt tatacctttc tgatgtagag
+      361 aaatataatg gttcggggaa attgtttccc aaaacaccta tacctgaaaa tgctttttct
+      421 ctttctatta ttccatggac ttcatttact gggtttaact taaatatcaa taataatagt
+      481 aattaccttc tacccattat tacagcagga aaattcatta ataaaggtaa ttcaatatat
+      541 ttaccgctat ctttacaggt acatcattct gtttgtgatg gttatcatgc aggattgttt
+      601 atgaactcta ttcaggaatt gtcagatagg cctaatgact ggcttttata atatgagata
+      661 atgccgactg tactttcgga tcctaaacgc aattgatgat tggttcggaa ggcacgttag
+      721 gaatcattac cgaagtaatc gttaaactgt tgccgattcc gctagggacc cataacttcg
+      781 tataatgtat gctatacgaa cggtacagcc cgggcatgag ctccgatcgc tacgagaaga
+      841 cgcactatcg accataccta ataatttatc tacattccct ttagtaacgt gaagaagatc
+      901 tctaaagctg acggggtaaa ctatataaaa tccaaataaa tttctaaaaa taaaaaagtc
+      961 tgtcgatgaa cagacttttt tattatagtt taaagcaaac ttttaaatat aataaaaaga
+     1021 gttagttgaa attttctact aactcttttt tatttttagt ttttaactgc agaagcaaat
+     1081 tcttctttag caaaagcttc atcgatgata gctttcaatt gagcgtgtaa ctttccaaat
+     1141 ttacaaaagc gactcataga attatttcct cccgttaaat aatagataac tattaaaaat
+     1201 agacaatact tgctcataag taacggtact taaattgttt actttggcgt gtttcattgc
+     1261 ttgatgaaac tgatttttag taaacagttg acgatattct cgattgaccc attttgaaac
+     1321 aaagtacgta tatagcttcc aatatttatc tggaacatct gtggtatggc gggtaagttt
+     1381 tattaagaca ctgtttactt ttggtttagg atgaaagcat tccgctggca gcttaagcaa
+     1441 ttgctgaatc gagacttgag tgtgcaagag caaccctagt gttcggtgaa tatccaaggt
+     1501 acgcttgtag aatccttctt caacaatcag atagatgtca gacgcatggc tttcaaaaac
+     1561 cactttttta ataatttgtg tgcttaaatg gtaaggaata ctcccaacaa ttttatacct
+     1621 ctgtttgtta gggaattgaa actgtagaat atcttggtga attaaagtga cacgagtatt
+     1681 cagttttaat ttttctgacg ataagttgaa tagatgactg tctaattcaa tagacgttac
+     1741 ctgtttactt attttagcca gtttcgtcgt taaatgccct ttacctgttc caatttcgta
+     1801 aacggtatcg gtttctttta aattcaattg ttttattatt tggttgagta ctttttcact
+     1861 cgttaaaaag ttttgagaat attttatatt tttgttcatg taatcactcc ttcttaatta
+     1921 caaattttta gcatctaatt taacttcaat tcctattata caaaatttta agatactgca
+     1981 ctatcaacac actcttaagt ttgcttctaa gtcttatttc cataacttct tttacgtttc
+     2041 cgccattctt tgctgtttcg atttttatga tatggtgcaa gtcagcacga acacgaaccg
+     2101 tcttatctcc cattatatct ttttttgcac tgattggtgt atcatttcgt ttttcttttg
+     2161 cggacctgca gatgcgatat catgcgcatg caagcttatc gatgataagc tgtcaaacat
+     2221 gagaattaca acttatatcg tatggggctg acttcaggtg ctacatttga agagataaat
+     2281 tgcactgaaa tctagaaata ttttatctga ttaataagat gatcttcttg agatcgtttt
+     2341 ggtctgcgcg taatctcttg ctctgaaaac gaaaaaaccg ccttgcaggg cggtttttcg
+     2401 aaggttctct gagctaccaa ctctttgaac cgaggtaact ggcttggagg agcgcagtca
+     2461 ccaaaacttg tcctttcagt ttagccttaa ccggcgcatg acttcaagac taactcctct
+     2521 aaatcaatta ccagtggctg ctgccagtgg tgcttttgca tgtctttccg ggttggactc
+     2581 aagacgatag ttaccggata aggcgcagcg gtcggactga acggggggtt cgtgcataca
+     2641 gtccagcttg gagcgaactg cctacccgga actgagtgtc aggcgtggaa tgagacaaac
+     2701 gcggccataa cagcggaatg acaccggtaa accgaaaggc aggaacagga gagcgcacga
+     2761 gggagccgcc agggggaaac gcctggtatc tttatagtcc tgtcgggttt cgccaccact
+     2821 gatttgagcg tcagatttcg tgatgcttgt caggggggcg gagcctatgg aaaaacggct
+     2881 ttgccgcggc cctctcactt ccctgttaag tatcttcctg gcatcttcca ggaaatctcc
+     2941 gccccgttcg taagccattt ccgctcgccg cagtcgaacg accgagcgta gcgagtcagt
+     3001 gagcgaggaa gcggaatata tcctgtatca catattctgc tgacgcaccg gtgcagcctt
+     3061 ttttctcctg ccacatgaag cacttcactg acaccctcat cagtgccaac atagtaagcc
+     3121 agtatacact ccgctagcgc tgatgtccgg cggtgctttt gccgttacgc accaccccgt
+     3181 cagtagctga acaggaggga cagcgtgttg ctttgattga tagccaaaaa gcagcagttg
+     3241 ataaagcaat tactgatatt gctgaaaaat tgtaatttat aaataaaaat caccttttag
+     3301 aggtggtttt tttatttata aattattcgt ttgatttcgc tttcgataga acaatcaaag
+     3361 cgagaataag gaagataaat cccataaggg cgggagcaga atgtccgaga ctaatgtaaa
+     3421 tttgtccacc aattaaagga ccgataacgc gctcgagcct gatagaaaca gaagccactg
+     3481 gagcacgttt aaacaattta aatctaccgt tcgtataatg tatgctatac gaagttatga
+     3541 caatgtctta ggcgttaagg tcgttttagc cgatggtcgc gaagttaagt aaggtaccat
+     3601 gcagtttaaa ttcggtcctc gggatatgat aagaatggct taataaagcg gttactttgg
+     3661 atttttgtga gcttggacta gaaaaaaact tcacaaaatg ctatactagg tagataaaaa
+     3721 tttaggaggc atatcaa
+//
+
