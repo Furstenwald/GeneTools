@@ -45,14 +45,20 @@ public class SequenceTools {
      */
     static public SequenceDNA trim5seq(SequenceDNA prefix, SequenceDNA seq2trim, int maxMistakes, int lookInFirstBp)
     {
+        lookInFirstBp--;
         if (lookInFirstBp>seq2trim.getLength()-1)
             lookInFirstBp=seq2trim.getLength()-1;
         SubstitutionMatrix sms = (new SubstitutionMatricesDNA()).dna;
         Alignment align = AlignmentTools.align(prefix, seq2trim.getLinearSubSequence(new Position(0,lookInFirstBp,false)), sms, AlignmentTools.CFE);
-        int mismatches = prefix.getLength()-(align.endPosA-align.startPosA+1)+align.getNonMatchingCount();
+        int mismatches = align.getNonMatchingCount();//prefix.getLength()-(align.endPosA-align.startPosA+1)+align.getNonMatchingCount();
         
         if (mismatches>maxMistakes)
             return null;
+        
+        if ((align.a.length-lookInFirstBp)>maxMistakes+1)
+        {
+            return null;
+        }
         
         int startSOI = align.endPosB+1;
         
@@ -82,6 +88,9 @@ public class SequenceTools {
         if (mismatches>maxMistakes)
             return null;
         if (minRecognizedLength>recognizedLength)
+            return null;
+        
+        if (align.startPosA>0)
             return null;
         
         int endSOI = lookAfterPos+align.startPosB-1;

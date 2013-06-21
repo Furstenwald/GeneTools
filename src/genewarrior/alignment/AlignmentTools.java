@@ -140,7 +140,7 @@ public class AlignmentTools {
      * @param sm SubstitutionMatrix
      * @param type Local, Global, CFE
      * @return an ArrayList of type Rank, order according to descending score. Use rank.rank for the score, and rank.seq for the feature
-     */public static ArrayList<Rank> scoreAgainstList(SequenceDNA query, ArrayList<Feature> search, SubstitutionMatrix sm, byte type)
+     */public static ArrayList<Rank> scoreAgainstListOfFeatures(SequenceDNA query, ArrayList<Feature> search, SubstitutionMatrix sm, byte type)
     {
         ArrayList<Rank> ranking = new ArrayList<Rank>();
         for (Feature seq : search)
@@ -150,6 +150,52 @@ public class AlignmentTools {
                 int score = quickalign(query, ((Contig)seq.getParent()).getSequence().getLinearSubSequence(seq.position), sm, type);
                 ranking.add(new Rank(score, seq));
             }
+        }
+
+        Collections.sort(ranking);
+        Collections.reverse(ranking);
+
+        return ranking;
+    }
+     
+              /**
+     * Quick align the query dna to an Array of <code>NamedSequenceDNA</code> in the ArrayList search. Orders according to descending score
+     * @param query
+     * @param search ArrayList of features
+     * @param sm SubstitutionMatrix
+     * @param type Local, Global, CFE
+     * @return an ArrayList of type Rank, order according to descending score. Use rank.rank for the score, and rank.seq for the feature
+     */
+     public static ArrayList<Rank> scoreAgainstNamedSequenceDNA(SequenceDNA query, ArrayList<NamedSequenceDNA> search, SubstitutionMatrix sm, byte type)
+    {
+        ArrayList<Rank> ranking = new ArrayList<Rank>();
+        for (NamedSequenceDNA seq : search)
+        {
+            int score = quickalign(query, seq.getSequence(), sm, type);
+            ranking.add(new Rank(score, seq));
+        }
+
+        Collections.sort(ranking);
+        Collections.reverse(ranking);
+
+        return ranking;
+    }
+     
+              /**
+     * Quick align the query dna to an Array of <code>NamedSequenceDNA</code> in the ArrayList search. Orders according to descending score
+     * @param query
+     * @param search ArrayList of features
+     * @param sm SubstitutionMatrix
+     * @param type Local, Global, CFE
+     * @return an ArrayList of type Rank, order according to descending score. Use rank.rank for the score, and rank.seq for the feature
+     */
+     public static ArrayList<Rank> scoreAgainstNamedSequenceAA(SequenceAA query, ArrayList<NamedSequenceAA> search, SubstitutionMatrix sm, byte type)
+    {
+        ArrayList<Rank> ranking = new ArrayList<Rank>();
+        for (NamedSequenceAA seq : search)
+        {
+            int score = quickalign(query, seq.getSequence(), sm, type);
+            ranking.add(new Rank(score, seq));
         }
 
         Collections.sort(ranking);
