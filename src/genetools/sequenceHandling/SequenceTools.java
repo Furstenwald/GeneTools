@@ -5,11 +5,8 @@
 
 package genetools.sequenceHandling;
 
-import genetools.alignment.Alignment;
-import genetools.alignment.AlignmentTools;
-import genetools.alignment.SubstitutionMatricesDNA;
-import genetools.alignment.SubstitutionMatrix;
-import java.util.*;
+import genetools.alignment.*;
+import java.util.ArrayList;
 
 /**
  * Toolkit to handle <code>SequenceDNA</code>, do not directly access <code>SequenceDNA</code> methods.
@@ -66,6 +63,36 @@ public class SequenceTools {
     }
     
     /**
+     * Trims the prefix-Sequence from the 5'-end of the seq2trim-Sequence if it has less than maxMistakes and occurs within lookInFirstBp of the 5'-end
+     * @param prefix
+     * @param seq2trim
+     * @param maxMistakes
+     * @param lookInFirstBp
+     * @return trimmed sequence or null if nothing is trimmed
+     */
+    static public SequenceAA trim5seq(SequenceAA prefix, SequenceAA seq2trim, int maxMistakes, int lookInFirstBp)
+    {
+        lookInFirstBp--;
+        if (lookInFirstBp>seq2trim.getLength()-1)
+            lookInFirstBp=seq2trim.getLength()-1;
+        SubstitutionMatrix sms = (new SubstitutionMatrices()).blosum[6];
+        Alignment align = AlignmentTools.align(prefix, seq2trim.getLinearSubSequence(0,lookInFirstBp), sms, AlignmentTools.CFE);
+        int mismatches = align.getNonMatchingCount();//prefix.getLength()-(align.endPosA-align.startPosA+1)+align.getNonMatchingCount();
+        
+        if (mismatches>maxMistakes)
+            return null;
+        
+        if ((align.a.length-lookInFirstBp)>maxMistakes+1)
+        {
+            return null;
+        }
+        
+        int startSOI = align.endPosB+1;
+        
+        return seq2trim.getLinearSubSequence(startSOI,seq2trim.getLength()-1);
+    }
+    
+    /**
      * Trims the prefix-Sequence from the 3'-end of the seq2trim-Sequence if it has less than maxMistakes and the matching part of the sequence is at least minRecognizedLength and it occurs in the last bp (on the 3'-End) which is indicated by lookInLastBp
      * used to trim primers from sequencing reads, where a primer might only be partially sequenced
      * @param suffix
@@ -96,6 +123,72 @@ public class SequenceTools {
         int endSOI = lookAfterPos+align.startPosB-1;
         
         return seq2trim.getLinearSubSequence(new Position(0,endSOI,false));
+    }
+    
+        /**
+     * Trims the prefix-Sequence from the 3'-end of the seq2trim-Sequence if it has less than maxMistakes and occurs within lookInLastBp of the 3'-end
+     * @param suffix
+     * @param seq2trim
+     * @param maxMistakes
+     * @param lookInLastBp
+     * @return trimmed sequence or null if nothing is trimmed
+     */
+    static public SequenceAA trim3seq_keep(SequenceAA suffix, SequenceAA seq2trim, int maxMistakes, int lookInLastBp)
+    {
+        if (lookInLastBp>seq2trim.getLength()-1)
+            lookInLastBp=seq2trim.getLength()-1;
+        int lookAfterPos = seq2trim.getLength()-lookInLastBp;
+        
+        SubstitutionMatrix sms = (new SubstitutionMatrices()).blosum[6];
+        Alignment align = AlignmentTools.align(suffix, seq2trim.getLinearSubSequence(lookAfterPos,seq2trim.getLength()-1), sms, AlignmentTools.CFE);
+        int mismatches = align.getNonMatchingCount();
+        
+        
+        if (mismatches>maxMistakes)
+            return null;
+        
+        if ((align.a.length-lookInLastBp)>maxMistakes+1)
+        {
+            return null;
+        }
+        
+        
+        int endSOI = lookAfterPos+align.endPosB;
+        
+        return seq2trim.getLinearSubSequence(0,endSOI);
+    }
+    
+    /**
+     * Trims the prefix-Sequence from the 3'-end of the seq2trim-Sequence if it has less than maxMistakes and the matching part of the sequence is at least minRecognizedLength and it occurs in the last bp (on the 3'-End) which is indicated by lookInLastBp
+     * used to trim primers from sequencing reads, where a primer might only be partially sequenced
+     * @param suffix
+     * @param seq2trim
+     * @param maxMistakes
+     * @param minRecognizedLength
+     * @param lookInLastBp
+     * @return trimmed sequence or null if nothing is trimmed
+     */
+    static public SequenceAA trim3seq(SequenceAA suffix, SequenceAA seq2trim, int maxMistakes, int minRecognizedLength, int lookInLastBp)
+    {
+        if (lookInLastBp>seq2trim.getLength()-1)
+            lookInLastBp=seq2trim.getLength()-1;
+        int lookAfterPos = seq2trim.getLength()-lookInLastBp;
+        SubstitutionMatrix sms = (new SubstitutionMatrices()).blosum[6];
+        Alignment align = AlignmentTools.align(suffix, seq2trim.getLinearSubSequence(lookAfterPos,seq2trim.getLength()-1), sms, AlignmentTools.CFE);
+        int mismatches = align.getNonMatchingCount();
+        int recognizedLength = align.endPosA-align.startPosA+1;
+        
+        if (mismatches>maxMistakes)
+            return null;
+        if (minRecognizedLength>recognizedLength)
+            return null;
+        
+        if (align.startPosA>0)
+            return null;
+        
+        int endSOI = lookAfterPos+align.startPosB-1;
+        
+        return seq2trim.getLinearSubSequence(0,endSOI);
     }
 
     /**
@@ -240,6 +333,15 @@ public class SequenceTools {
  */
     static public SequenceDNA combineSequences(SequenceDNA first, SequenceDNA second)
     {
+        if (first==null&&second==null)
+            return null;
+        
+        if (first==null)
+            return new SequenceDNA(second.getByteArray(), second.isRNA());
+        
+        if (second==null)
+            return new SequenceDNA(first.getByteArray(), first.isRNA());
+        
         boolean isRNA = first.isRNA();
         if (second.isRNA()!=isRNA)
         {

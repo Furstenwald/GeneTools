@@ -45,6 +45,25 @@ public class SequenceAA extends Sequence {
     }
 
     /**
+         * Returns Subsequence of given Position, assumes that this <code>SequenceDNA</code> is linear.
+         * @param pos
+         * @return null if illegal position
+         */
+        public SequenceAA getLinearSubSequence(int startPos, int endPos)
+        {
+
+            if (startPos>getLength()-1 || endPos>getLength()-1 || startPos>endPos)
+                return null;
+
+            byte[] subArray = new byte[endPos-startPos+1];
+            System.arraycopy(sequence, startPos, subArray, 0, endPos-startPos+1);
+
+            SequenceAA subSequence = new SequenceAA(subArray);
+            
+            return subSequence;
+        }
+    
+    /**
      * Create <code>SequenceAA</code> using a byte array.
      * @param seq
      */

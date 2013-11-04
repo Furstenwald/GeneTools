@@ -6,17 +6,12 @@
 package genetools.IO;
 
 
-import genetools.sequenceHandling.SequenceTools;
-import genetools.sequenceHandling.SequenceDNA;
+import genetools.*;
 import genetools.sequenceHandling.Position;
-import genetools.Species;
-import genetools.GeneWarriorElement;
-import genetools.additionalInfo;
-import genetools.Feature;
-import genetools.Contig;
-import genetools.proteinProduct;
+import genetools.sequenceHandling.SequenceDNA;
+import genetools.sequenceHandling.SequenceTools;
 import java.io.*;
-import java.util.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -444,7 +439,7 @@ public class genbankRead {
                 else if (tokens[0].toLowerCase().equals("product"))
                 {
                     product = tokens[1];
-                    System.out.println("Recognized: "+product);
+                    //System.out.println("Recognized: "+product);
                 }
                 else if (tokens[0].toLowerCase().equals("locus_tag"))
                 {
@@ -543,7 +538,7 @@ public class genbankRead {
         {
             if (f.isProteinProduct())
             {
-                System.out.println(f.name[0]+"/"+f.name[1]);
+                //System.out.println(f.name[0]+"/"+f.name[1]);
                 f.buildProtein(convertedMolecule.getSequence());
             }
         }

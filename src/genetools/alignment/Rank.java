@@ -19,7 +19,14 @@ public class Rank implements Comparable<Rank>{
     public Feature feature;
     public NamedSequenceDNA seqdna;
     public NamedSequenceAA seqaa;
+    public String name;
 
+    public Rank(int rank, String name)
+    {
+        this.rank = rank;
+        this.name = name;
+    }
+    
     public Rank(int rank, Feature seq)
     {
         this.rank = rank;
