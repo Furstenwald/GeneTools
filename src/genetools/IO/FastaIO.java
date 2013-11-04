@@ -5,11 +5,7 @@
 package genetools.IO;
 
 import genetools.NGS.QualitySequenceDNA;
-import genetools.sequenceHandling.NamedSequenceAA;
-import genetools.sequenceHandling.NamedSequenceDNA;
-import genetools.sequenceHandling.SequenceAA;
-import genetools.sequenceHandling.SequenceDNA;
-import genetools.sequenceHandling.SequenceTools;
+import genetools.sequenceHandling.*;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -27,6 +23,7 @@ public class FastaIO {
      */
     public static ArrayList<NamedSequenceDNA> readFastaDNA(File f) throws FileNotFoundException, IOException
     {
+        Nucleotide nuc = new Nucleotide();
         
         ArrayList<NamedSequenceDNA> list = new ArrayList<NamedSequenceDNA>();
         
@@ -35,31 +32,33 @@ public class FastaIO {
         
         String output;
         String name = "unnamed";
-        SequenceDNA sequence =new SequenceDNA("",false);
-        int line=0;
+        //SequenceDNA sequence =new SequenceDNA("",false);
+        //int line=0;
+        ArrayList<String> seq = new ArrayList<String>();
         while ((output = reader.readLine()) != null)
         {
-            line++;
+            //line++;
             //if (line%1000==0)
                 //System.out.println("Read line "+(++line));
             if (output.startsWith(">"))
             {
-                if (sequence.getLength()>0)
+                if (seq.size()>0)
                 {
-                    list.add(new NamedSequenceDNA(name,sequence));
+                    list.add(new NamedSequenceDNA(name,new SequenceDNA(nuc.string2bytearray(seq),false)));
 
-                    sequence =new SequenceDNA("",false);
+                    seq = new ArrayList<String>();
+                    //sequence =new SequenceDNA("",false);
                 }
                 name = output.substring(1);
                 if (name.trim().isEmpty())
                     name="unnamed";
             }
             else if (!output.trim().isEmpty())
-                sequence =SequenceTools.combineSequences(sequence, new SequenceDNA(output.trim(), false));
+                seq.add(output.trim());
         }
-        if (sequence.getLength()>0)
+        if (seq.size()>0)
         {
-            list.add(new NamedSequenceDNA(name,sequence));
+            list.add(new NamedSequenceDNA(name,new SequenceDNA(nuc.string2bytearray(seq),false)));
         }
         reader.close();
         leser.close();

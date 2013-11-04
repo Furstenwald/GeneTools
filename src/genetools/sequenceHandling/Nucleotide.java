@@ -202,6 +202,36 @@ public class Nucleotide {
         }
         return nucleotides;
     }
+    
+    /**
+     * Converts ArrayList of String sequence to Byte Array (concatenation of the array to one sequence; helper function for reading fasta files).
+     * @param seq ArrayList of Sequence to convert to Byte[], all ordered
+     * @return byte for each nucleotide or gap if no valid nucleotide
+     */
+    public byte[] string2bytearray(ArrayList<String> seq)
+    {
+        int length = 0;
+        for (String s : seq)
+            length+=s.length();
+        
+        byte[] nucleotides = new byte[length];
+        
+        int pos = 0;
+        for (String s : seq)
+        {
+             char[] seqArray = s.toUpperCase().toCharArray();
+             for (int i=0;i<seqArray.length;i++)
+            {
+                if (nucleotideChar.get(seqArray[i])==null)
+                    nucleotides[pos++] = __;
+                else
+                    nucleotides[pos++] = nucleotideChar.get(seqArray[i]);
+            }
+        }
+       
+        
+        return nucleotides;
+    }
 
         /**
          * Converts Byte Array to String sequence
