@@ -298,10 +298,6 @@ public class Nucleotide {
     {
         byte[] revnucleotides = new byte[seq.length];
 
-        if (isRNA)
-            complementByte.put(_A, _U);
-        else
-            complementByte.put(_A, _T);
 
         for (int i=0;i<seq.length;i++)
         {
@@ -311,7 +307,8 @@ public class Nucleotide {
                 revnucleotides[i] = complementByte.get(seq[i]);
         }
 
-        complementByte.remove(_A);
+        if (isRNA)
+            revnucleotides=changeByte(revnucleotides, Nucleotide._T, Nucleotide._U);
         return revnucleotides;
     }
 
