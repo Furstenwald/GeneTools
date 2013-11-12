@@ -14,16 +14,16 @@ import java.util.NoSuchElementException;
  *
  * @author corona
  */
-public class QualityFile implements Iterable<QualitySequenceDNA>{
+public class QualityFileRead implements Iterable<QualitySequenceDNA>{
 
-    public QualityFile(File FASTQ) throws FileNotFoundException
+    public QualityFileRead(File FASTQ) throws FileNotFoundException
     {
         isFASTQ=true;
         fastqReader = new BufferedReader(new FileReader(FASTQ));
         iterator = new QualityFileIterator();
     }
     
-    public QualityFile(File FASTA, File QUAL) throws FileNotFoundException
+    public QualityFileRead(File FASTA, File QUAL) throws FileNotFoundException
     {
         isFASTQ=false;
         fastaReader = new BufferedReader(new FileReader(FASTA));
@@ -84,7 +84,7 @@ public class QualityFile implements Iterable<QualitySequenceDNA>{
                     noNext=true;
                     return;
                 }
-                if (!name.startsWith("%"))
+                if (!name.startsWith("@"))
                 {
                     throw new QualitySequenceFileException(QualitySequenceFileException.MALFORMATTED_INPUT_FILE);
                 }
