@@ -51,8 +51,7 @@ public class SequenceTools {
         
         if (mismatches>maxMistakes)
             return null;
-        
-        if ((align.a.length-lookInFirstBp)>maxMistakes+1)
+        if ((align.a.length-lookInFirstBp)>maxMistakes-mismatches+1)
         {
             return null;
         }
@@ -82,7 +81,7 @@ public class SequenceTools {
         if (mismatches>maxMistakes)
             return null;
         
-        if ((align.a.length-lookInFirstBp)>maxMistakes+1)
+        if ((align.a.length-lookInFirstBp)>maxMistakes-mismatches+1)
         {
             return null;
         }
@@ -147,7 +146,7 @@ public class SequenceTools {
         if (mismatches>maxMistakes)
             return null;
         
-        if ((align.a.length-lookInLastBp)>maxMistakes+1)
+        if ((align.a.length-lookInLastBp)>maxMistakes-mismatches+1)
         {
             return null;
         }
