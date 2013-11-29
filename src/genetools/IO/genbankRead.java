@@ -60,7 +60,7 @@ public class genbankRead {
         }
         else if (currentState==Features)
         {
-            if (str.toLowerCase().trim().startsWith("origin")) //sequence is starting
+            if (str.toLowerCase().trim().equals("origin")) //sequence is starting
             {
                 addFeature(StringStore.toArray());
                 StringStore = new ArrayList(); //delete old StringStore
@@ -434,7 +434,7 @@ public class genbankRead {
             if (isProteinProduct)
             {
                 //System.out.println("Tokens: "+tokens[0]+" Line: "+i);
-                if (tokens[0].toLowerCase().equals("gene"))
+                if (tokens[0].toLowerCase().equals("gene")||tokens[0].toLowerCase().equals("name"))
                         name[0]=tokens[1];
                 else if (tokens[0].toLowerCase().equals("product"))
                 {
@@ -483,7 +483,7 @@ public class genbankRead {
             }
             else //not proteinproduct
             {
-                if (tokens[0].toLowerCase().equals("gene"))
+                if (tokens[0].toLowerCase().equals("gene")||tokens[0].toLowerCase().equals("name"))
                     name[0]=tokens[1];
                 else if (tokens[0].toLowerCase().equals("product"))
                     name[1]=tokens[1];

@@ -67,6 +67,7 @@ public class QualityFileRead implements Iterable<QualitySequenceDNA>{
         }
     }
 
+    @Override
     public Iterator<QualitySequenceDNA> iterator() {
         return iterator;
     }
@@ -185,6 +186,8 @@ public class QualityFileRead implements Iterable<QualitySequenceDNA>{
                 } catch (QualitySequenceFileException ex) {
                     return false;
                 }
+                if (currentSeq==null)
+                    return false;
                 nextCalled=false;
                 return true;
             }
