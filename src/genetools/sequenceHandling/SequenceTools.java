@@ -468,7 +468,7 @@ public class SequenceTools {
             while (j>=0 && Nucleotide.compareNucleotide(muster[j],string[i+j]))
                 j--;
             if (j<0)
-                matchPosition.add(j);
+                matchPosition.add(i);
 
                 
             i+=musterlength-1;
