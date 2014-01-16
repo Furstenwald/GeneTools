@@ -538,15 +538,15 @@ public class SequenceTools {
         }
 
         int i=0;
-        int j=0;
+        int j;
 
         while (i<=stringlength-musterlength)
         {
             j=musterlength-1;
-            while (j>=0 && aminos.compareAminoacids(muster[j],string[i+j]))
+            while (j>=0 && Aminoacids.compareAminoacids(muster[j],string[i+j]))
                 j--;
             if (j<0)
-                matchPosition.add(j);
+                matchPosition.add(i);
 
 
             i+=musterlength-1;
