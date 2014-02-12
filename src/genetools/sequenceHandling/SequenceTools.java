@@ -189,7 +189,7 @@ public class SequenceTools {
         
         return seq2trim.getLinearSubSequence(0,endSOI);
     }
-
+    
     /**
      * Translates given <code>SequenceDNA</code> to <code>SequenceAA</code> using TranslationTable and codonStart
      * Attention: codon with an ambigiuos DNA sequence will be translated to X (Xaa; any amino acid)
@@ -200,6 +200,20 @@ public class SequenceTools {
      * @return
      */
     static public SequenceAA DNA2Protein(SequenceDNA seq, int TranslationTable, int codonStart)
+    {
+        return DNA2Protein(seq, TranslationTable, codonStart, true);
+    }
+
+    /**
+     * Translates given <code>SequenceDNA</code> to <code>SequenceAA</code> using TranslationTable and codonStart
+     * Attention: codon with an ambigiuos DNA sequence will be translated to X (Xaa; any amino acid)
+     * @param seq
+     * @param TranslationTable
+     * @param codonStart 1,2 or 3
+     * @param useStartCodon use for the first codon the special start codon translation table
+     * @return
+     */
+    static public SequenceAA DNA2Protein(SequenceDNA seq, int TranslationTable, int codonStart, boolean useStartCodon)
     {
         if (seq==null)
             return null;
@@ -219,7 +233,7 @@ public class SequenceTools {
 
         
         
-        proteinsequence[0]=aminos.translationTable[TranslationTable][1][nucleotidesequence[i-2]][nucleotidesequence[i-1]][nucleotidesequence[i]];
+        proteinsequence[0]=aminos.translationTable[TranslationTable][(useStartCodon?1:0)][nucleotidesequence[i-2]][nucleotidesequence[i-1]][nucleotidesequence[i]];
         int k=1;
         for(i+=3; i<seq.getLength(); i+=3)
         {
