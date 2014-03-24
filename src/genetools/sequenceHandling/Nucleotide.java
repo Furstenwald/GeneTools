@@ -47,6 +47,11 @@ public class Nucleotide {
      * complementByte looks up Byte and gives complement byte
      */
     public final Map<Byte, Byte> complementByte = new HashMap<Byte, Byte>();
+    
+    /**
+     * ambigousCode gives matching ambigous code of two nucleotides
+     */
+    public final byte[][] ambigousCode = new byte[alphabetSize][alphabetSize];
 
     public Nucleotide()
     { 
@@ -67,6 +72,143 @@ public class Nucleotide {
         complementByte.put(_V, _B);
         complementByte.put(_N, _N);
         complementByte.put(__, __);
+        
+        ambigousCode[_A][_A] = _A;
+        ambigousCode[_A][_C] = ambigousCode[_C][_A] = _M;
+        ambigousCode[_A][_G] = ambigousCode[_G][_A] = _R;
+        ambigousCode[_A][_T] = ambigousCode[_T][_A] = _W;
+        ambigousCode[_A][_R] = ambigousCode[_R][_A] = _R;
+        ambigousCode[_A][_Y] = ambigousCode[_Y][_A] = _H;
+        ambigousCode[_A][_S] = ambigousCode[_S][_A] = _V;
+        ambigousCode[_A][_W] = ambigousCode[_W][_A] = _W;
+        ambigousCode[_A][_K] = ambigousCode[_K][_A] = _D;
+        ambigousCode[_A][_M] = ambigousCode[_M][_A] = _M;
+        ambigousCode[_A][_B] = ambigousCode[_B][_A] = _N;
+        ambigousCode[_A][_D] = ambigousCode[_D][_A] = _D;
+        ambigousCode[_A][_H] = ambigousCode[_H][_A] = _H;
+        ambigousCode[_A][_V] = ambigousCode[_V][_A] = _V;
+        ambigousCode[_A][_N] = ambigousCode[_N][_A] = _N;
+        ambigousCode[_A][__] = ambigousCode[__][_A] = _A;
+        ambigousCode[_C][_C] = _C;
+        ambigousCode[_C][_G] = ambigousCode[_G][_C] = _S;
+        ambigousCode[_C][_T] = ambigousCode[_T][_C] = _Y;
+        ambigousCode[_C][_R] = ambigousCode[_R][_C] = _V;
+        ambigousCode[_C][_Y] = ambigousCode[_Y][_C] = _Y;
+        ambigousCode[_C][_S] = ambigousCode[_S][_C] = _S;
+        ambigousCode[_C][_W] = ambigousCode[_W][_C] = _H;
+        ambigousCode[_C][_K] = ambigousCode[_K][_C] = _B;
+        ambigousCode[_C][_M] = ambigousCode[_M][_C] = _M;
+        ambigousCode[_C][_B] = ambigousCode[_B][_C] = _B;
+        ambigousCode[_C][_D] = ambigousCode[_D][_C] = _N;
+        ambigousCode[_C][_H] = ambigousCode[_H][_C] = _H;
+        ambigousCode[_C][_V] = ambigousCode[_V][_C] = _V;
+        ambigousCode[_C][_N] = ambigousCode[_N][_C] = _N;
+        ambigousCode[_C][__] = ambigousCode[__][_C] = _C;
+        ambigousCode[_G][_G] = _G;
+        ambigousCode[_G][_T] = ambigousCode[_T][_G] = _K;
+        ambigousCode[_G][_R] = ambigousCode[_R][_G] = _R;
+        ambigousCode[_G][_Y] = ambigousCode[_Y][_G] = _B;
+        ambigousCode[_G][_S] = ambigousCode[_S][_G] = _S;
+        ambigousCode[_G][_W] = ambigousCode[_W][_G] = _D;
+        ambigousCode[_G][_K] = ambigousCode[_K][_G] = _K;
+        ambigousCode[_G][_M] = ambigousCode[_M][_G] = _V;
+        ambigousCode[_G][_B] = ambigousCode[_B][_G] = _B;
+        ambigousCode[_G][_D] = ambigousCode[_D][_G] = _D;
+        ambigousCode[_G][_H] = ambigousCode[_H][_G] = _N;
+        ambigousCode[_G][_V] = ambigousCode[_V][_G] = _V;
+        ambigousCode[_G][_N] = ambigousCode[_N][_G] = _N;
+        ambigousCode[_G][__] = ambigousCode[__][_G] = _G;
+        ambigousCode[_T][_T] = _T;
+        ambigousCode[_T][_R] = ambigousCode[_R][_T] = _D;
+        ambigousCode[_T][_Y] = ambigousCode[_Y][_T] = _Y;
+        ambigousCode[_T][_S] = ambigousCode[_S][_T] = _B;
+        ambigousCode[_T][_W] = ambigousCode[_W][_T] = _W;
+        ambigousCode[_T][_K] = ambigousCode[_K][_T] = _K;
+        ambigousCode[_T][_M] = ambigousCode[_M][_T] = _H;
+        ambigousCode[_T][_B] = ambigousCode[_B][_T] = _B;
+        ambigousCode[_T][_D] = ambigousCode[_D][_T] = _D;
+        ambigousCode[_T][_H] = ambigousCode[_H][_T] = _H;
+        ambigousCode[_T][_V] = ambigousCode[_V][_T] = _N;
+        ambigousCode[_T][_N] = ambigousCode[_N][_T] = _N;
+        ambigousCode[_T][__] = ambigousCode[__][_T] = _T;
+        ambigousCode[_R][_R] = _R;
+        ambigousCode[_R][_Y] = ambigousCode[_Y][_R] = _N;
+        ambigousCode[_R][_S] = ambigousCode[_S][_R] = _V;
+        ambigousCode[_R][_W] = ambigousCode[_W][_R] = _D;
+        ambigousCode[_R][_K] = ambigousCode[_K][_R] = _D;
+        ambigousCode[_R][_M] = ambigousCode[_M][_R] = _V;
+        ambigousCode[_R][_B] = ambigousCode[_B][_R] = _N;
+        ambigousCode[_R][_D] = ambigousCode[_D][_R] = _D;
+        ambigousCode[_R][_H] = ambigousCode[_H][_R] = _N;
+        ambigousCode[_R][_V] = ambigousCode[_V][_R] = _V;
+        ambigousCode[_R][_N] = ambigousCode[_N][_R] = _N;
+        ambigousCode[_R][__] = ambigousCode[__][_R] = _R;
+        ambigousCode[_Y][_Y] = _Y;
+        ambigousCode[_Y][_S] = ambigousCode[_S][_Y] = _B;
+        ambigousCode[_Y][_W] = ambigousCode[_W][_Y] = _H;
+        ambigousCode[_Y][_K] = ambigousCode[_K][_Y] = _B;
+        ambigousCode[_Y][_M] = ambigousCode[_M][_Y] = _H;
+        ambigousCode[_Y][_B] = ambigousCode[_B][_Y] = _B;
+        ambigousCode[_Y][_D] = ambigousCode[_D][_Y] = _N;
+        ambigousCode[_Y][_H] = ambigousCode[_H][_Y] = _H;
+        ambigousCode[_Y][_V] = ambigousCode[_V][_Y] = _N;
+        ambigousCode[_Y][_N] = ambigousCode[_N][_Y] = _N;
+        ambigousCode[_Y][__] = ambigousCode[__][_Y] = _Y;
+        ambigousCode[_S][_S] = _S;
+        ambigousCode[_S][_W] = ambigousCode[_W][_S] = _N;
+        ambigousCode[_S][_K] = ambigousCode[_K][_S] = _B;
+        ambigousCode[_S][_M] = ambigousCode[_M][_S] = _V;
+        ambigousCode[_S][_B] = ambigousCode[_B][_S] = _B;
+        ambigousCode[_S][_D] = ambigousCode[_D][_S] = _N;
+        ambigousCode[_S][_H] = ambigousCode[_H][_S] = _N;
+        ambigousCode[_S][_V] = ambigousCode[_V][_S] = _V;
+        ambigousCode[_S][_N] = ambigousCode[_N][_S] = _N;
+        ambigousCode[_S][__] = ambigousCode[__][_S] = _S;
+        ambigousCode[_W][_W] = _W;
+        ambigousCode[_W][_K] = ambigousCode[_K][_W] = _D;
+        ambigousCode[_W][_M] = ambigousCode[_M][_W] = _H;
+        ambigousCode[_W][_B] = ambigousCode[_B][_W] = _N;
+        ambigousCode[_W][_D] = ambigousCode[_D][_W] = _D;
+        ambigousCode[_W][_H] = ambigousCode[_H][_W] = _H;
+        ambigousCode[_W][_V] = ambigousCode[_V][_W] = _N;
+        ambigousCode[_W][_N] = ambigousCode[_N][_W] = _N;
+        ambigousCode[_W][__] = ambigousCode[__][_W] = _W;
+        ambigousCode[_K][_K] = _K;
+        ambigousCode[_K][_M] = ambigousCode[_M][_K] = _N;
+        ambigousCode[_K][_B] = ambigousCode[_B][_K] = _B;
+        ambigousCode[_K][_D] = ambigousCode[_D][_K] = _D;
+        ambigousCode[_K][_H] = ambigousCode[_H][_K] = _N;
+        ambigousCode[_K][_V] = ambigousCode[_V][_K] = _N;
+        ambigousCode[_K][_N] = ambigousCode[_N][_K] = _N;
+        ambigousCode[_K][__] = ambigousCode[__][_K] = _K;
+        ambigousCode[_M][_M] = _M;
+        ambigousCode[_M][_B] = ambigousCode[_B][_M] = _N;
+        ambigousCode[_M][_D] = ambigousCode[_D][_M] = _N;
+        ambigousCode[_M][_H] = ambigousCode[_H][_M] = _H;
+        ambigousCode[_M][_V] = ambigousCode[_V][_M] = _V;
+        ambigousCode[_M][_N] = ambigousCode[_N][_M] = _N;
+        ambigousCode[_M][__] = ambigousCode[__][_M] = _M;
+        ambigousCode[_B][_B] = _B;
+        ambigousCode[_B][_D] = ambigousCode[_D][_B] = _N;
+        ambigousCode[_B][_H] = ambigousCode[_H][_B] = _N;
+        ambigousCode[_B][_V] = ambigousCode[_V][_B] = _N;
+        ambigousCode[_B][_N] = ambigousCode[_N][_B] = _N;
+        ambigousCode[_B][__] = ambigousCode[__][_B] = _B;
+        ambigousCode[_D][_D] = _D;
+        ambigousCode[_D][_H] = ambigousCode[_H][_D] = _N;
+        ambigousCode[_D][_V] = ambigousCode[_V][_D] = _N;
+        ambigousCode[_D][_N] = ambigousCode[_N][_D] = _N;
+        ambigousCode[_D][__] = ambigousCode[__][_D] = _D;
+        ambigousCode[_H][_H] = _H;
+        ambigousCode[_H][_V] = ambigousCode[_V][_H] = _N;
+        ambigousCode[_H][_N] = ambigousCode[_N][_H] = _N;
+        ambigousCode[_H][__] = ambigousCode[__][_H] = _H;
+        ambigousCode[_V][_V] = _V;
+        ambigousCode[_V][_N] = ambigousCode[_N][_V] = _N;
+        ambigousCode[_V][__] = ambigousCode[__][_V] = _V;
+        ambigousCode[_N][_N] = _N;
+        ambigousCode[_N][__] = ambigousCode[__][_N] = _N;
+        ambigousCode[__][__] = ambigousCode[__][__] = __;
 
         nucleotideChar.put('A', _A);
         nucleotideChar.put('C', _C);
@@ -286,6 +428,30 @@ public class Nucleotide {
 
         return seq_nogaps;
 
+    }
+    
+    /**
+     * Returns the ambigous nucleotide, e.g. ambigous(Nucleotide._A, Nucleotdide._T) returns Nucleotide._W
+     * @param a
+     * @param b
+     * @return 
+     */
+    public byte ambigous(byte a, byte b)
+    {
+        return ambigousCode[(a==_U?_T:a)][(b==_U?_T:b)];
+    }
+    
+    /**
+     * Returns the ambigous nucleotide, e.g. ambigous('A', 'T') returns 'W'
+     * @param a
+     * @param b
+     * @return 
+     */
+    public char ambigous(char a, char b)
+    {
+        byte a_ = nucleotideChar.get(a);
+        byte b_ = nucleotideChar.get(b);
+        return nucleotideByte.get(ambigous(a_,b_));
     }
 
     /**
