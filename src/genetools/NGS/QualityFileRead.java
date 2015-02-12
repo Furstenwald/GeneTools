@@ -67,7 +67,6 @@ public class QualityFileRead implements Iterable<QualitySequenceDNA>{
         }
     }
 
-    @Override
     public Iterator<QualitySequenceDNA> iterator() {
         return iterator;
     }

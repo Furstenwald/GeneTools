@@ -22,7 +22,6 @@ public class COGrank implements Comparable<COGrank>, Serializable{
         this.cog = cog;
     }
 
-    @Override
     public int compareTo(COGrank r)
     {
         return r.rank-rank;

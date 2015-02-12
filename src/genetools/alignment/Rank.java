@@ -45,7 +45,6 @@ public class Rank implements Comparable<Rank>{
         this.seqaa = seq;
     }
 
-    @Override
     public int compareTo(Rank r)
     {
         return rank-r.rank;
