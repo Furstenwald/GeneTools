@@ -10,7 +10,6 @@ import genetools.alignment.SubstitutionMatrix;
 import genetools.sequenceHandling.SequenceAA;
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
