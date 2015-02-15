@@ -349,7 +349,7 @@ private void setTranslationTable(int codenr, String Description, String AA, Stri
             if (d==__||d>26)
                 gaps++;
         }
-
+        
         if (gaps==0)
             return seq;
 

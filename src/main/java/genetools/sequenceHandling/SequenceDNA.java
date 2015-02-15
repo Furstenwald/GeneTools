@@ -154,10 +154,9 @@ public class SequenceDNA extends Sequence {
         /**
          * Deletes all Gaps (-)
          */
-        public void killGaps()
+        public SequenceDNA killGaps()
         {
-            sequence = nucl.killGaps(sequence);
-            updateNucleotideCount();
+            return new SequenceDNA(nucl.killGaps(sequence),isRNA);
         }
 
         public void setByteArray(byte[] newbytearray)
