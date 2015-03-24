@@ -1,7 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package genetools.NGS;
 
 import java.io.*;
@@ -25,11 +21,8 @@ public class QualityFileWrite {
         
         out.write(qs.getSequence().toString());out.newLine();
         out.write("+");out.newLine();
-        for (int i=0;i<qs.getQuality().length;i++)
-        {
-            char c = (char)(qs.getQuality()[i]+33);
-            out.write(c);
-        }
+        
+        out.write(NGSTools.convertQualities(qs.getQuality()));
         out.newLine();
     }
   

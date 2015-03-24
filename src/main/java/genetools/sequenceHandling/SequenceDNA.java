@@ -30,6 +30,15 @@ public class SequenceDNA extends Sequence {
             setSequence(seq);
             this.isRNA = isRNA;
         }
+        
+        /**
+         * Create <code>SequenceDNA</code> using a string, illegal nucleotides are converted to Gaps (-). Assumed to be DNA.
+         * @param seq
+         */
+        public SequenceDNA(String seq) {
+        	setSequence(seq);
+            this.isRNA = false;
+        }
 
         /**
          * Create <code>SequenceDNA</code> using a byte array. Set <code>isRNA</code> to true, if RNA, false if DNA.
@@ -42,6 +51,9 @@ public class SequenceDNA extends Sequence {
             this.isRNA = isRNA;
         }
 
+        /**
+         * Create an empty sequence
+         */
         public SequenceDNA()
         {
             sequence = new byte[0];

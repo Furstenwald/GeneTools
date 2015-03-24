@@ -2,6 +2,7 @@ package genetools.IO;
 
 import genetools.exceptions.BadGeneFileException;
 import genetools.Species;
+
 import java.io.*;
 
 
@@ -73,6 +74,14 @@ public class SaveTools {
 		{
 			ex.printStackTrace();
 			throw new BadGeneFileException(BadGeneFileException.CAST_ERROR);
+		}
+		finally {
+			try {
+				in.close();
+				fis.close();
+			} catch (IOException e) {
+				//ignore
+			}
 		}
 		
 		return spec;

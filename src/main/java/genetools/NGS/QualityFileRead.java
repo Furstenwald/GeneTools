@@ -106,11 +106,7 @@ public class QualityFileRead implements Iterable<QualitySequenceDNA>{
                     throw new QualitySequenceFileException(QualitySequenceFileException.MALFORMATTED_INPUT_FILE);
                 }
                 
-                byte q[] = qualities.trim().getBytes();
-                for (int i=0;i<q.length;i++)
-                {
-                    q[i]=(byte)(q[i]-33);
-                }
+                byte q[] = NGSTools.convertQualities(qualities);
                 
                 currentSeq = new QualitySequenceDNA(name,new SequenceDNA(seq.trim(),false),q);
             }

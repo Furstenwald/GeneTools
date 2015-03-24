@@ -74,8 +74,6 @@ public class Feature  extends GeneWarriorElement implements Cloneable{
                 cloneName[1] = name[1];
 
                 cloned.name = cloneName;
-                if (cloned==null)
-                    System.out.println("clone is null");
 
                 return cloned;
             }
@@ -171,8 +169,8 @@ public class Feature  extends GeneWarriorElement implements Cloneable{
         this.position = pos;
     }
 
-    public byte getObjectType()
+    public ElementType getObjectType()
     {
-        return GeneWarriorElement.Feature;
+        return GeneWarriorElement.ElementType.Feature;
     }
 }

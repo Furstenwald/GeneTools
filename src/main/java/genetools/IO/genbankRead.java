@@ -9,7 +9,6 @@ package genetools.IO;
 import genetools.*;
 import genetools.sequenceHandling.Position;
 import genetools.sequenceHandling.SequenceDNA;
-import genetools.sequenceHandling.SequenceTools;
 import java.io.*;
 import java.util.ArrayList;
 
@@ -21,6 +20,7 @@ public class genbankRead {
     Species species = new Species();
     Contig convertedMolecule = new Contig();
     SequenceDNA convertedSequence = new SequenceDNA();
+    ArrayList<SequenceDNA> convertedSequenceArray = new ArrayList<>();
 
     private final static byte Headers = 0;
     private final static byte Features = 1;
@@ -34,7 +34,7 @@ public class genbankRead {
     Feature workingFeature = null;
     proteinProduct workingProteinProduct = null;
 
-    ArrayList StringStore = new ArrayList();
+    ArrayList<String> StringStore = new ArrayList<>();
 
     private void addLine(String str)
 
@@ -50,7 +50,8 @@ public class genbankRead {
             else if (str.toLowerCase().trim().startsWith("features")) //features start
             {
                 addHeaders(StringStore.toArray());
-                StringStore = new ArrayList(); //delete old StringStore
+                StringStore = new ArrayList<>(); //delete old StringStore
+                //System.out.println("Features");
                 currentState = Features;
             }
             else if (LocusHandled) //muss nach Locus-Entry sein
@@ -63,17 +64,18 @@ public class genbankRead {
             if (str.toLowerCase().trim().equals("origin")) //sequence is starting
             {
                 addFeature(StringStore.toArray());
-                StringStore = new ArrayList(); //delete old StringStore
+                StringStore = new ArrayList<>(); //delete old StringStore
+                //System.out.println("Sequence");
                 currentState = Sequence;
             }
             else
             {
-                if (str.substring(0,20).trim().isEmpty()) //WeiterfÃ¼hrung eines Features
+                if (str.trim().isEmpty()||str.substring(0,20).trim().isEmpty()) //Weiterführung eines Features
                     StringStore.add(str);
                 else //neues Feature
                 {
                     addFeature(StringStore.toArray());
-                    StringStore = new ArrayList(); // delete old StringStore
+                    StringStore = new ArrayList<>(); // delete old StringStore
                     StringStore.add(str);
                 }
             }
@@ -84,22 +86,24 @@ public class genbankRead {
             {
                 addSequence(str);
             }
-            else if (str.startsWith("//"))//sequence ist fertig, nÃ¤chste beginnt
+            else if (str.startsWith("//"))//sequence ist fertig, nächste beginnt
             {
                 finishMolecule();
                 currentState=Headers;
                 convertedMolecule = new Contig();
+                convertedSequenceArray = new ArrayList<>();
                 convertedSequence = new SequenceDNA();
 
                 LocusHandled = false;
 
                 workingFeature = null;
                 workingProteinProduct = null;
-                StringStore = new ArrayList();
+                StringStore = new ArrayList<>();
             }
             else
             {
                 currentState = End;
+                //System.out.println("End");
             }
         }
 
@@ -526,11 +530,27 @@ public class genbankRead {
         String sequence = str.substring(10).trim();
         sequence = sequence.replace(" ", "");
         SequenceDNA sequence2add = new SequenceDNA(sequence, convertedSequence.isRNA());
-        convertedSequence = SequenceTools.combineSequences(convertedSequence, sequence2add);
+        convertedSequenceArray.add(sequence2add);
+        //convertedSequence = SequenceTools.combineSequences(convertedSequence, sequence2add);
     }
 
     private void finishMolecule()
     {
+    	//combine all sequences
+    	int length = 0;
+    	for (SequenceDNA seq : convertedSequenceArray) {
+    		length += seq.getLength();
+    	}
+    	if (length==0)
+    		return;
+    	byte[] catSeq = new byte[length];
+    	int l=0;
+    	for (int i=0;i<convertedSequenceArray.size();i++) {
+    		System.arraycopy(convertedSequenceArray.get(i).getByteArray(), 0, catSeq, l, convertedSequenceArray.get(i).getLength());
+    		l+=convertedSequenceArray.get(i).getLength();
+    	}
+    	convertedSequence.setByteArray(catSeq);
+    	
         convertedMolecule.setSequence(convertedSequence);
         convertedMolecule.setShortcut("@C"+getShortcutNumber()+"@");
 
@@ -560,16 +580,16 @@ public class genbankRead {
     {
         FileReader leser = new FileReader(f);
         BufferedReader reader = new BufferedReader(leser);
-        int linenr = 0;
+        //int linenr = 0;
 
         try
         {
             String output;
             while ((output = reader.readLine()) != null)
             {
-                linenr++;
-                if (linenr%10000==0)
-                    System.out.println(linenr);
+                //linenr++;
+                //if (linenr%10000==0)
+                //    System.out.println(linenr);
                 if (!output.isEmpty())
                     addLine(output);
             }

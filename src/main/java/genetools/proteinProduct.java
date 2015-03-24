@@ -109,8 +109,8 @@ public class proteinProduct  extends GeneWarriorElement implements Cloneable{
         }
     }
 
-    public byte getObjectType()
+    public ElementType getObjectType()
     {
-        return GeneWarriorElement.ProteinProduct;
+        return GeneWarriorElement.ElementType.ProteinProduct;
     }
 }

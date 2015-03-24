@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package genetools.GC;
+package genetools.GenomeAnalysis;
 
 import genetools.sequenceHandling.Nucleotide;
 import genetools.sequenceHandling.SequenceDNA;
@@ -12,7 +12,7 @@ import genetools.sequenceHandling.SequenceDNA;
  * Holds the GCcontent of sliding Window
  * @author btbase
  */
-public class ATskew {
+public class GCskew {
     byte[] content;
     int length;
     int windowSize;
@@ -66,7 +66,7 @@ public class ATskew {
 
     
 
-    public ATskew(SequenceDNA seq, int windowSize, int stepSize)
+    public GCskew(SequenceDNA seq, int windowSize, int stepSize)
     {
         bplength = seq.getLength();
         length = seq.getLength()/stepSize;
@@ -77,8 +77,8 @@ public class ATskew {
         
         for (int i=0;i<length;i++)
         {
-            int A = 0;
-            int T = 0;
+            int G = 0;
+            int C = 0;
             
             int start = (i*stepSize)-(windowSize/2);
             int end = (start+windowSize)-1;
@@ -94,13 +94,13 @@ public class ATskew {
                 if (actualK<0||actualK>seq.getLength()-1) //happens only if windowSize is bigger than seq.getLength
                     continue;
 
-                if (seq.getByteArray()[actualK]==Nucleotide._A)
-                    A++;
-                else if(seq.getByteArray()[actualK] == Nucleotide._T)
-                    T++;
+                if (seq.getByteArray()[actualK]==Nucleotide._G)
+                    G++;
+                else if(seq.getByteArray()[actualK] == Nucleotide._C)
+                    C++;
             }
 
-            content[i]=(byte)(((double)(A-T))/((double)(A+T))*100);
+            content[i]=(byte)(((double)(C-G))/((double)(C+G))*100);
         }
 
     }

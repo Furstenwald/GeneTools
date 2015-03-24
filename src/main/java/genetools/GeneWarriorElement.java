@@ -14,17 +14,15 @@ import java.util.Random;
  */
 public abstract class GeneWarriorElement implements Cloneable, Serializable {
     protected String shortcut;
-    public final static byte Species = 1;
-    public final static byte Contig = 2;
-    public final static byte Feature = 3;
-    public final static byte ProteinProduct = 4;
+    
+    public enum ElementType {Species, Contig, Feature, ProteinProduct};
     protected GeneWarriorElement parent;
 
     /**
      * What type of Object is this <code>GeneWarriorElement</code>? Species, Contig, Feature or ProteinProduct
      * @return
      */
-    public abstract byte getObjectType();
+    public abstract ElementType getObjectType();
 
     /**
      * Returns the associated parent. E.g. the Feature for the ProteinProduct, the Contig for the Feature or the Species for the Contig.

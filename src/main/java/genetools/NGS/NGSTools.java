@@ -6,8 +6,6 @@ package genetools.NGS;
 
 import genetools.sequenceHandling.Position;
 import genetools.sequenceHandling.SequenceTools;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  *
@@ -33,6 +31,24 @@ public class NGSTools {
         return new QualitySequenceDNA(qs.getName(),SequenceTools.reverseComplement(qs.getSequence(), true, true),qual);
     }
     
+    public static byte[] convertQualities(String qualities) {
+    	byte q[] = qualities.trim().getBytes();
+        for (int i=0;i<q.length;i++)
+        {
+            q[i]=(byte)(q[i]-33);
+        }
+        return q;
+    }
+    
+    public static String convertQualities(byte[] qualities) {
+    	String q="";
+    	for (int i=0;i<qualities.length;i++)
+        {
+            char c = (char)(qualities[i]+33);
+            q+=c;
+        }
+    	return q;
+    }
     
     
 }

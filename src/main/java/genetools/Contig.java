@@ -310,8 +310,8 @@ public class Contig extends GeneWarriorElement implements Cloneable{
         return note;
     }
 
-    public byte getObjectType()
+    public ElementType getObjectType()
     {
-        return GeneWarriorElement.Contig;
+        return GeneWarriorElement.ElementType.Contig;
     }
 }

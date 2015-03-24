@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package genetools.GC;
+package genetools.GenomeAnalysis;
 
 import genetools.Contig;
 import genetools.sequenceHandling.Nucleotide;
@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import org.apache.commons.math3.stat.inference.*;
 
 /**
- * Base deviatino index
+ * Base deviation index
  * @author btbase
  */
 public class BDI {

@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package genetools;
 
 import java.util.ArrayList;
@@ -13,8 +8,8 @@ import java.util.ArrayList;
  */
 public class Species  extends GeneWarriorElement{
     private static final long serialVersionUID = 604094988740974903L;
-    public String name = "blabla12";
-    public String shortname = "blabla";
+    public String name = "no name set";
+    public String shortname = "no name set";
 
     public ArrayList<Contig> contigs = new ArrayList<Contig>();
 
@@ -40,9 +35,9 @@ public class Species  extends GeneWarriorElement{
         return;
     }
 
-    public byte getObjectType()
+    public ElementType getObjectType()
     {
-        return GeneWarriorElement.Species;
+        return GeneWarriorElement.ElementType.Species;
     }
 
 }
