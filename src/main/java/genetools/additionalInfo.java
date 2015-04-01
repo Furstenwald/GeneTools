@@ -128,7 +128,8 @@ public class additionalInfo implements Cloneable, Serializable{
     /**
      * Deep clone of <code>additionalInfo</code>
      */
-    @Override
+    @SuppressWarnings("unchecked")
+	@Override
     public Object clone()
     {
         try

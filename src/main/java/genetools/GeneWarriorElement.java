@@ -13,7 +13,9 @@ import java.util.Random;
  * @author btserver
  */
 public abstract class GeneWarriorElement implements Cloneable, Serializable {
-    protected String shortcut;
+
+	private static final long serialVersionUID = -7634092283396779826L;
+	protected String shortcut;
     
     public enum ElementType {Species, Contig, Feature, ProteinProduct};
     protected GeneWarriorElement parent;

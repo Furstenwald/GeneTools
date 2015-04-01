@@ -15,7 +15,7 @@ public SubstitutionMatricesDNA()
 
 //Nucleotides
 dna.name = "Nucleotides";
-dna.type = dna.DNA;
+dna.type = SubstitutionMatrix.DNA;
 dna.distance =10;
 dna.gapcost =-10;
 dna.matrix = new int[17][17];
