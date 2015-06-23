@@ -218,7 +218,7 @@ public class SequenceTools {
         if (seq==null)
             return null;
 
-        if (seq.getLength()-codonStart<3)
+        if (seq.getLength()-(codonStart-1)<3)
             return null;
 
 

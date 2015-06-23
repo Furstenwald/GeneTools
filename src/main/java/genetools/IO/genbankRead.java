@@ -70,7 +70,7 @@ public class genbankRead {
             }
             else
             {
-                if (str.trim().isEmpty()||str.substring(0,20).trim().isEmpty()) //Weiterführung eines Features
+                if (str.trim().isEmpty()||str.substring(0,20).trim().isEmpty()) //Weiterfhrung eines Features
                     StringStore.add(str);
                 else //neues Feature
                 {
@@ -86,7 +86,7 @@ public class genbankRead {
             {
                 addSequence(str);
             }
-            else if (str.startsWith("//"))//sequence ist fertig, nächste beginnt
+            else if (str.startsWith("//"))//sequence ist fertig, nchste beginnt
             {
                 finishMolecule();
                 currentState=Headers;
