@@ -69,8 +69,8 @@ public class AlignmentTools {
      */
     public static float percentageExactMatches(Alignment align)
     {
-        Nucleotide nucl = new Nucleotide();
-        Aminoacids aminos = new Aminoacids();
+        //Nucleotide nucl = new Nucleotide();
+        //Aminoacids aminos = new Aminoacids();
 
         int match = 0;
         int total = 0;

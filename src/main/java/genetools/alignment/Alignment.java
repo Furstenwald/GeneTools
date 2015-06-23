@@ -7,7 +7,6 @@ package genetools.alignment;
 
 import genetools.sequenceHandling.Aminoacids;
 import genetools.sequenceHandling.Nucleotide;
-import genetools.sequenceHandling.SequenceDNA;
 
 /**
  *

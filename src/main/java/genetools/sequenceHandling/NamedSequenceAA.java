@@ -10,9 +10,6 @@ package genetools.sequenceHandling;
  * used for FASTA files
  */
 public class NamedSequenceAA implements Cloneable{
-    /**
-     * 
-     */
     private static final long serialVersionUID = 7185806490860658722L;
 
     private SequenceAA seq;
